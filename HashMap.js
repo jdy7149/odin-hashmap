@@ -1,17 +1,15 @@
-import LinkedList from "./LinkedList";
-
 export default class HashMap {
   #capacity = 16;
-  #buckets = Array.from({ length: this.#capacity }, () => null);
+  #buckets = Array.from({ length: this.#capacity }, () => []);
   #loadFactor = 0.75;
   #length = 0;
 
   set(key, value) {
-    const hashcode = this.#hash(key);
+
   }
   
   get(key) {
-    
+
   }
   
   has(key) {
@@ -23,23 +21,23 @@ export default class HashMap {
   }
   
   length() {
-    
+    return this.#length;
   }
   
   clear() {
-    
+
   }
   
   keys() {
-    
+
   }
   
   values() {
-    
+
   }
   
   entries() {
-    
+
   }
   
   #hash(key) {
@@ -51,5 +49,13 @@ export default class HashMap {
     }
   
     return hashCode;
+  }
+
+  #growBuckets() {
+
+  }
+
+  #isExceedLoad() {
+    return this.#length > this.#capacity * this.#loadFactor;
   }
 }
