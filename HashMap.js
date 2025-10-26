@@ -7,6 +7,10 @@ export default class HashMap {
   set(key, value) {
     const hashCode = this.#hash(key);
 
+    if (hashCode < 0 || hashCode >= this.#buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
     const bucket = this.#buckets[hashCode];
 
     const index = bucket.findIndex((node) => node.key === key);
@@ -24,6 +28,10 @@ export default class HashMap {
   get(key) {
     const hashCode = this.#hash(key);
 
+    if (hashCode < 0 || hashCode >= this.#buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
     const bucket = this.#buckets[hashCode];
 
     return bucket.find((node) => node.key === key)?.value ?? null;
@@ -32,6 +40,10 @@ export default class HashMap {
   has(key) {
     const hashCode = this.#hash(key);
 
+    if (hashCode < 0 || hashCode >= this.#buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
     const bucket = this.#buckets[hashCode];
 
     return bucket.some((node) => node.key === key);
@@ -39,6 +51,10 @@ export default class HashMap {
 
   remove(key) {
     const hashCode = this.#hash(key);
+
+    if (hashCode < 0 || hashCode >= this.#buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
 
     const bucket = this.#buckets[hashCode];
 
